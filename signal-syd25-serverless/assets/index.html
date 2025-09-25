@@ -176,13 +176,13 @@
   <div class="container">
     <div class="header">
       <h1>🚎 SIGNAL Transport Assist</h1>
-      <div class="brand">Markdown Viewer - Messaging Reimagined</div>
+      <div class="brand">File Viewer - Messaging Reimagined</div>
     </div>
     
     <div class="file-selector">
-      <label for="fileSelect">📄 Select Markdown File:</label>
+      <label for="fileSelect">📄 Select File:</label>
       <select id="fileSelect">
-        <option value="example.md">Example Document</option>
+        <option value="demo-assets.md">Demo Assets</option>
         <option value="privacy.md">Privacy Policy</option>
         <option value="tos.md">Terms of Service</option>
       </select>
@@ -213,7 +213,7 @@
   
   <script>
     // Configuration
-    const MARKDOWN_FILES = ['example.md', 'privacy.md', 'tos.md'];
+    const MARKDOWN_FILES = ['demo-assets.md', 'privacy.md', 'tos.md'];
     
     // DOM elements
     const contentDiv = document.getElementById('content');
@@ -319,7 +319,7 @@
             break;
           case '1':
             e.preventDefault();
-            fileSelect.value = 'example.md';
+            fileSelect.value = 'demo-assets.md';
             loadMarkdownFile();
             break;
           case '2':
