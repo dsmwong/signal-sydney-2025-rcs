@@ -1,4 +1,4 @@
-# TwiliTransit Privacy Policy
+# SIGNAL Transport Assist Privacy Policy
 
 > [!IMPORTANT]
 > Note: This is an example terms of service used for representation purposes only during a Twilio Forge event and does not represent a real company.
@@ -8,7 +8,7 @@
 
 ## 1. Introduction
 
-TwiliTransit ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our transportation services, mobile application, website, and related technologies (collectively, the "Services").
+SIGNAL Transport Assist ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our transportation services, mobile application, website, and related technologies (collectively, the "Services").
 
 ## 2. Information We Collect
 
@@ -142,7 +142,7 @@ We implement industry-standard security measures including:
 
 ## 8. International Data Transfers
 
-TwiliTransit operates globally. Your information may be transferred to and processed in countries other than your residence. We ensure appropriate safeguards are in place for international transfers.
+SIGNAL Transport Assist operates globally. Your information may be transferred to and processed in countries other than your residence. We ensure appropriate safeguards are in place for international transfers.
 
 ## 9. Children's Privacy
 
@@ -172,7 +172,7 @@ We may update this Privacy Policy periodically. We will notify you of material c
 
 For questions about this Privacy Policy or to exercise your rights, contact us:
 
-**TwiliTransit Privacy Team**  
+**SIGNAL Transport Assist Privacy Team**  
 Email: privacy@twilitransit.com  
 Phone: 1-800-TWILIGHT  
 Address: 123 Innovation Drive, Tech Valley, CA 94000
@@ -184,4 +184,4 @@ For EU residents, you may also contact your local data protection authority.
 
 ---
 
-*This Privacy Policy is part of our commitment to transparency and your privacy rights. By using TwiliTransit Services, you acknowledge that you have read and understood this policy.*
+*This Privacy Policy is part of our commitment to transparency and your privacy rights. By using SIGNAL Transport Assist Services, you acknowledge that you have read and understood this policy.*

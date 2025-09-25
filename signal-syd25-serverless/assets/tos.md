@@ -1,4 +1,4 @@
-# TwiliTransit Terms of Service
+# SIGNAL Transport Assist Terms of Service
 
 > [!IMPORTANT]
 > Note: This is an example terms of service used for representation purposes only during a Twilio Forge event and does not represent a real company.
@@ -8,13 +8,13 @@
 
 ## 1. Acceptance of Terms
 
-Welcome to TwiliTransit. These Terms of Service ("Terms") govern your use of TwiliTransit's transportation services, mobile application, website, and related technologies (collectively, the "Services"). By accessing or using our Services, you agree to be bound by these Terms.
+Welcome to SIGNAL Transport Assist. These Terms of Service ("Terms") govern your use of SIGNAL Transport Assist's transportation services, mobile application, website, and related technologies (collectively, the "Services"). By accessing or using our Services, you agree to be bound by these Terms.
 
 If you do not agree to these Terms, you may not use our Services.
 
 ## 2. Description of Services
 
-TwiliTransit is a technology platform that connects users with transportation options using cutting-edge connectivity solutions. Our Services include:
+SIGNAL Transport Assist is a technology platform that connects users with transportation options using cutting-edge connectivity solutions. Our Services include:
 
 - On-demand transportation booking and management
 - Real-time vehicle tracking and route optimization
@@ -26,7 +26,7 @@ TwiliTransit is a technology platform that connects users with transportation op
 ## 3. Eligibility and Account Registration
 
 ### 3.1 Eligibility Requirements
-To use TwiliTransit Services, you must:
+To use SIGNAL Transport Assist Services, you must:
 - Be at least 18 years of age
 - Have the legal capacity to enter into these Terms
 - Provide accurate and complete registration information
@@ -62,13 +62,13 @@ You may not:
 ## 5. Transportation Services
 
 ### 5.1 Service Availability
-TwiliTransit technology facilitates connections between users and transportation providers. We do not guarantee:
+SIGNAL Transport Assist technology facilitates connections between users and transportation providers. We do not guarantee:
 - Availability of transportation at all times
 - Specific arrival or travel times
 - Availability in all geographic areas
 
 ### 5.2 Third-Party Providers
-Transportation is provided by independent third-party operators. TwiliTransit is not responsible for:
+Transportation is provided by independent third-party operators. SIGNAL Transport Assist is not responsible for:
 - The actions or omissions of transportation providers
 - Vehicle condition or maintenance
 - Driver behavior or qualifications
@@ -105,7 +105,7 @@ Refunds are provided at our discretion and may be issued for:
 
 ## 7. Intellectual Property Rights
 
-### 7.1 TwiliTransit Property
+### 7.1 SIGNAL Transport Assist Property
 Our Services contain proprietary content including:
 - Software, algorithms, and technology systems
 - Trademarks, logos, and branding materials
@@ -131,7 +131,7 @@ We implement appropriate security measures to protect your information, though w
 ## 9. Safety and Security
 
 ### 9.1 Safety Features
-TwiliTransit includes safety features such as:
+SIGNAL Transport Assist includes safety features such as:
 - Real-time trip tracking and sharing
 - Emergency assistance buttons
 - Driver and vehicle verification
@@ -147,10 +147,10 @@ Users are responsible for:
 ## 10. Disclaimers and Limitations
 
 ### 10.1 Service Disclaimers
-TwiliTransit Services are provided "as is" without warranties of any kind. We disclaim all warranties, express or implied, including merchantability and fitness for a particular purpose.
+SIGNAL Transport Assist Services are provided "as is" without warranties of any kind. We disclaim all warranties, express or implied, including merchantability and fitness for a particular purpose.
 
 ### 10.2 Limitation of Liability
-To the maximum extent permitted by law, TwiliTransit's liability is limited to the amount paid by you for the specific Service giving rise to the claim, not to exceed $100.
+To the maximum extent permitted by law, SIGNAL Transport Assist's liability is limited to the amount paid by you for the specific Service giving rise to the claim, not to exceed $100.
 
 ### 10.3 Exclusions
 We are not liable for:
@@ -161,7 +161,7 @@ We are not liable for:
 
 ## 11. Indemnification
 
-You agree to indemnify and hold harmless TwiliTransit from claims, damages, and expenses arising from:
+You agree to indemnify and hold harmless SIGNAL Transport Assist from claims, damages, and expenses arising from:
 - Your use of our Services
 - Violation of these Terms
 - Violation of applicable laws
@@ -175,7 +175,7 @@ You may terminate your account at any time by:
 - Using account deletion features in the app
 - Following account closure procedures
 
-### 12.2 Termination by TwiliTransit
+### 12.2 Termination by SIGNAL Transport Assist
 We may terminate or suspend your account for:
 - Violation of these Terms
 - Fraudulent or illegal activity
@@ -206,7 +206,7 @@ These Terms are governed by the laws of the State of California, without regard 
 ## 15. General Provisions
 
 ### 15.1 Entire Agreement
-These Terms, together with our Privacy Policy, constitute the entire agreement between you and TwiliTransit regarding the Services.
+These Terms, together with our Privacy Policy, constitute the entire agreement between you and SIGNAL Transport Assist regarding the Services.
 
 ### 15.2 Modifications
 We may modify these Terms at any time. Material changes will be communicated through:
@@ -219,7 +219,7 @@ We may modify these Terms at any time. Material changes will be communicated thr
 If any provision of these Terms is found unenforceable, the remaining provisions will remain in full force and effect.
 
 ### 15.4 Assignment
-You may not assign your rights under these Terms. TwiliTransit may assign these Terms in connection with a merger, acquisition, or sale of assets.
+You may not assign your rights under these Terms. SIGNAL Transport Assist may assign these Terms in connection with a merger, acquisition, or sale of assets.
 
 ### 15.5 Force Majeure
 Neither party will be liable for delays or failures due to circumstances beyond reasonable control, including natural disasters, government actions, or technical failures.
@@ -228,7 +228,7 @@ Neither party will be liable for delays or failures due to circumstances beyond 
 
 For questions about these Terms of Service, contact us:
 
-**TwiliTransit Legal Department**  
+**SIGNAL Transport Assist Legal Department**  
 Email: legal@twilitransit.com  
 Phone: 1-800-TWILIGHT  
 Address: 123 Innovation Drive, Tech Valley, CA 94000
@@ -239,4 +239,4 @@ Phone: 1-800-TWILIGHT (available 24/7)
 
 ---
 
-*By using TwiliTransit Services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.*
+*By using SIGNAL Transport Assist Services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.*

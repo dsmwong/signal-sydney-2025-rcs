@@ -1,7 +1,6 @@
-# Media Files in Serverless Assets
+# Files in Serverless Assets
 
 - [banner-1440x448.jpg](banner-1440x448.jpg)
-- [banner-1440x448.png](banner-1440x448.png)
 - [loc-riverside-station.jpg](loc-riverside-station.jpg)
 - [loc-signal-city-market.jpg](loc-signal-city-market.jpg)
 - [loc-twilitown-bus-stop.jpg](loc-twilitown-bus-stop.jpg)
