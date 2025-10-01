@@ -1,0 +1,83 @@
+# ---- Node / JavaScript standard ignore ----
+# Install artifacts
+node_modules/
+
+# Dependency caches
+.npm/
+.pnpm-store/
+.yarn/cache/
+yarn-error.log
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage / testing
+coverage/
+.nyc_output/
+
+# Build outputs / dist
+build/
+dist/
+.out/
+.next/
+.next-tmp/
+parcel-cache/
+.cache/
+.tmp/
+.temp/
+
+# TypeScript build
+*.tsbuildinfo
+
+# Env files (keep example variants)
+.env
+.env.*
+!.env.example
+
+# Local OS/editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Optional lockfile ignores (keeping them tracked is usually better)
+# Uncomment if you intentionally do NOT want to commit them
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Diagnostics / profiling
+*.lcov
+
+# Node REPL history
+.node_repl_history
+
+# Docker / containers
+.docker/
+Dockerfile.local
+
+# Coverage reports
+coverage-final.json
+
+# Misc
+*.swp
+*.swo
+
+# ngrok artifacts (if any local session files)
+.ngrok2/
+# macOS extended attributes
+.AppleDouble
+.LSOverride
