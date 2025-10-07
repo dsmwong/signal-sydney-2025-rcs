@@ -1,0 +1,795 @@
+{
+	"info": {
+		"_postman_id": "cbf4f4d7-17d3-4cc7-8068-eecaab9a14cb",
+		"name": "CX Engagement with Rich Media - SIGNAL Sydney 2025",
+		"description": "Follow-along Postman Collection for the requests sent as part of the Twilio Forge: Messaging Reimagined webinar.\n\n## Setup\n\n- You will need an activated Twilio account.\n    \n- Create an [API Key from the Twilio Console](https://www.twilio.com/docs/iam/api-keys/keys-in-console). Consider creating a Restricted key with only the service you need. You can alternately create an [API key using the REST API](https://www.twilio.com/docs/iam/api-keys/key-resource-v1).\n    \n- Add the API Key and Secret to the environment.\n    \n- Get the Account SID from the Twilio Console homepage and add it to the environment.\n    \n- Follow the [Runbook's setup instructions](https://github.com/kaustavdm/forge-messaging-reimagined/blob/dev/RUNBOOK.md#build) and create additional resources.\n    \n\n### Story\n\nIn the fictional city of Owl Harbour, Alex decides to visit Signal City Market from TwiliTown. The city's integrated multi-modal mass transit system, TwiliTransit, plans and guides Alex through the journey as Alex goes from a Bus to a Ferry to a Metro, with rich, contextual messaging at each step.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "500867",
+		"_collection_link": "https://dawong-twilio.postman.co/workspace/SIGNAL-Sydney-2025~92d553fc-b44d-47ec-a3f2-752df39bbce9/collection/500867-cbf4f4d7-17d3-4cc7-8068-eecaab9a14cb?action=share&source=collection_link&creator=500867"
+	},
+	"item": [
+		{
+			"name": "Scene 1",
+			"item": [
+				{
+					"name": "Scene 1 Content Templates",
+					"item": [
+						{
+							"name": "Create Content Template - Initial Greeting",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Request is successful\", function () {",
+											"    pm.response.to.be.success;",
+											"});",
+											"",
+											"pm.test(\"Response has valid JSON with sid\", function () {",
+											"    pm.response.to.be.json;",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson).to.have.property('sid');",
+											"    ",
+											"    // Store the sid in environment variable",
+											"    pm.environment.set(\"CONTENT_SID_SCENE_1_1\", responseJson.sid);",
+											"    console.log(\"CONTENT_SID_SCENE_1_1 set to: \" + pm.environment.get(\"CONTENT_SID_SCENE_1_1\"));",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"friendly_name\": \"signal_syd25_scene_1_1_initial_greeting [{{ASSET_BASE_URL}}]\",\n    \"language\": \"en\",\n    \"variables\": {\n        \"name\": \"Bob\",\n        \"dest\": \"SIGNAL\"\n    },\n    \"types\": {\n        \"twilio/text\": {\n            \"body\": \"Hi {{name}}! Today's the day! Welcome to Signal Transport Assist! 🚎\\n\\nLet's get you to {{dest}}.\"\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://content.twilio.com/v1/Content",
+									"protocol": "https",
+									"host": [
+										"content",
+										"twilio",
+										"com"
+									],
+									"path": [
+										"v1",
+										"Content"
+									]
+								},
+								"description": "The Carousel Content Type in RCS does not support the `Body` field. So, we can add another message that we can trigger without fallback. We can trigger an RCS message with this content template in our application before the carousel message."
+							},
+							"response": []
+						},
+						{
+							"name": "Create Content Template - Trip plan",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Request is successful\", function () {",
+											"    pm.response.to.be.success;",
+											"});",
+											"",
+											"pm.test(\"Response has valid JSON with sid\", function () {",
+											"    pm.response.to.be.json;",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson).to.have.property('sid');",
+											"    ",
+											"    console.log(responseJson.sid);",
+											"    // Store the sid in environment variable",
+											"    pm.environment.set(\"CONTENT_SID_SCENE_1_2\", responseJson.sid);",
+											"    console.log(\"CONTENT_SID_SCENE_1_2 set to: \" + pm.environment.get(\"CONTENT_SID_SCENE_1_2\"));",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"friendly_name\": \"signal_syd25_scene_1_2_trip_plan [{{ASSET_BASE_URL}}]\",\n    \"language\": \"en\",\n    \"variables\": {\n        \"name\": \"Bob\",\n        \"dest\": \"SIGNAL\",\n        \"mode_1\": \"Mode A and B\",\n        \"mode_1_start\": \"Alpha Station\",\n        \"mode_1_time\": \"30\",\n        \"mode_1_img\": \"alpha.jpg\",\n        \"mode_2\": \"Mode B and C\",\n        \"mode_2_start\": \"Beta Station\",\n        \"mode_2_time\": \"25\",\n        \"mode_2_img\": \"beta.jpg\",\n        \"mode_3\": \"Mode C and D\",\n        \"mode_3_start\": \"Charlie Station\",\n        \"mode_3_time\": \"50\",\n        \"mode_3_img\": \"charlie.jpg\",\n        \"end_loc\": \"{{DEMO_END_LOCATION}}\",\n        \"end_image\": \"{{DEMO_END_IMAGE}}\"\n    },\n    \"types\": {\n        \"twilio/carousel\": {\n            \"body\": \"Hi {{name}}! Today's the day! Welcome to Signal Transport Assist! 🚎\\n\\nLet's get you to {{dest}}.\",\n            \"cards\": [\n                {\n                    \"title\": \"By {{mode_1}}\",\n                    \"body\": \"Taking this route from {{mode_1_start}}, it will take {{mode_1_time}} minutes.\",\n                    \"media\": \"https://{{ASSET_BASE_URL}}/{{mode_1_img}}\",\n                    \"actions\": [\n                        {\n                            \"type\": \"QUICK_REPLY\",\n                            \"id\": \"btn_1_2_mode_1\",\n                            \"title\": \"Notify me when it's time\"\n                        }\n                    ]\n                },\n                {\n                    \"title\": \"By {{mode_2}}\",\n                    \"body\": \"Taking this route from {{mode_2_start}}, it will take {{mode_2_time}} minutes.\",\n                    \"media\": \"https://{{ASSET_BASE_URL}}/{{mode_2_img}}\",\n                    \"actions\": [\n                        {\n                            \"type\": \"QUICK_REPLY\",\n                            \"id\": \"btn_1_2_mode_2\",\n                            \"title\": \"Notify me when it's time\"\n                        }\n                    ]\n                },\n                {\n                    \"title\": \"By {{mode_3}}\",\n                    \"body\": \"Taking this route from {{mode_1_start}}, it will take {{mode_3_time}} minutes.\",\n                    \"media\": \"https://{{ASSET_BASE_URL}}/{{mode_3_img}}\",\n                    \"actions\": [\n                        {\n                            \"type\": \"QUICK_REPLY\",\n                            \"id\": \"btn_1_2_mode_3\",\n                            \"title\": \"Notify me when it's time\"\n                        }\n                    ]\n                }\n            ]\n        },\n        \"twilio/text\": {\n            \"body\": \"Hi {{name}}! Welcome to Signal Transport Assist! 🚎\\n\\nLet's get you to {{dest}}.\\n\\nYour trip starts from {{start_loc} and ends at {{end_loc}}.\\n\\nReply with REMIND to get a reminder 5 mins before your bus arrives.\\n\\nReply with EMAIL to get the journey plan emailed to you instead.\"\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://content.twilio.com/v1/Content",
+									"protocol": "https",
+									"host": [
+										"content",
+										"twilio",
+										"com"
+									],
+									"path": [
+										"v1",
+										"Content"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Review trip plan content template",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://content.twilio.com/v1/Content/{{CONTENT_SID_SCENE_1_2}}",
+									"protocol": "https",
+									"host": [
+										"content",
+										"twilio",
+										"com"
+									],
+									"path": [
+										"v1",
+										"Content",
+										"{{CONTENT_SID_SCENE_1_2}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Scene 1 - Send initial message",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"CONTENT_VARIABLES\", JSON.stringify({",
+									"    name: pm.variables.get(\"DEMO_USER\"),",
+									"    dest: pm.variables.get(\"DEMO_DESTINATION\")",
+									"}))"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "From",
+									"value": "{{MESSAGING_SERVICE_SID}}",
+									"type": "text"
+								},
+								{
+									"key": "To",
+									"value": "{{TO}}",
+									"description": "Send for RCS only",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ContentSid",
+									"value": "{{CONTENT_SID_SCENE_1_1}}",
+									"type": "text"
+								},
+								{
+									"key": "ContentVariables",
+									"value": "{{CONTENT_VARIABLES}}",
+									"type": "text"
+								},
+								{
+									"key": "To",
+									"value": "{{RCS_CAPABLE_TO}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.twilio.com/2010-04-01/Accounts/{{ACCOUNT_SID}}/Messages.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"twilio",
+								"com"
+							],
+							"path": [
+								"2010-04-01",
+								"Accounts",
+								"{{ACCOUNT_SID}}",
+								"Messages.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Scene 1 - Send trip plan reply",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"CONTENT_VARIABLES\", JSON.stringify({",
+									"    name: pm.variables.get(\"DEMO_USER\"),",
+									"    dest: pm.variables.get(\"DEMO_DESTINATION\"),",
+									"    mode_1: \"Metro and Ferry\",",
+									"    mode_1_start: \"Crows Nest Metro Station\",",
+									"    mode_1_time: \"45\",",
+									"    mode_1_img: \"metro-ferry.jpg\",",
+									"    mode_2: \"Metro and Lightrail\",",
+									"    mode_2_start: \"Crows Nest Metro Station\",",
+									"    mode_2_time: \"40\",",
+									"    mode_2_img: \"metro-lightrail.jpg\",",
+									"    mode_3: \"Train and Bus\",",
+									"    mode_3_start: \"St Leonards Train Station\",",
+									"    mode_3_time: \"49\",",
+									"    mode_3_img: \"train-bus.jpg\",",
+									"    end_loc: pm.variables.get(\"DEMO_END_LOCATION\"),",
+									"    end_image: pm.variables.get(\"DEMO_END_IMAGE\"),",
+									"}))"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "From",
+									"value": "{{MESSAGING_SERVICE_SID}}",
+									"type": "text"
+								},
+								{
+									"key": "To",
+									"value": "{{TO}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ContentSid",
+									"value": "{{CONTENT_SID_SCENE_1_2}}",
+									"type": "text"
+								},
+								{
+									"key": "ContentVariables",
+									"value": "{{CONTENT_VARIABLES}}",
+									"type": "text"
+								},
+								{
+									"key": "To",
+									"value": "{{RCS_CAPABLE_TO}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.twilio.com/2010-04-01/Accounts/{{ACCOUNT_SID}}/Messages.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"twilio",
+								"com"
+							],
+							"path": [
+								"2010-04-01",
+								"Accounts",
+								"{{ACCOUNT_SID}}",
+								"Messages.json"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Trip planning:**\n\nAlex has begun their journey, and receives a journey plan over RCS. The journey begins with a walk to the TwiliTown Main St. Bus stop to board a bus to the Ferry. Alex also receives with an option for a reminder before the bus arrives."
+		},
+		{
+			"name": "Scene 2",
+			"item": [
+				{
+					"name": "Scene 2 Content Templates",
+					"item": [
+						{
+							"name": "Create Content Template - Reminder",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Request is successful\", function () {",
+											"    pm.response.to.be.success;",
+											"});",
+											"",
+											"pm.test(\"Response has valid JSON with sid\", function () {",
+											"    pm.response.to.be.json;",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson).to.have.property('sid');",
+											"    ",
+											"    // Store the sid in environment variable",
+											"    pm.environment.set(\"CONTENT_SID_SCENE_2_1\", responseJson.sid);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"friendly_name\": \"signal_syd25_scene_2_1_reminder [{{ASSET_BASE_URL}}]\",\n    \"language\": \"en\",\n    \"variables\": {\n        \"name\": \"Bob\",\n        \"transport_mode\": \"Mode A\",\n        \"transport_mode_start\": \"Alpha Station\",\n        \"platform_number\": \"1\"\n\n    },\n    \"types\": {\n        \"twilio/card\": {\n            \"title\": \"Time to leave!\",\n            \"body\": \"{{name}}. Your {{transport_mode}} is coming soon! Start making your way to {{transport_mode_start}}. {{transport_mode}} will leave on platform {{platform_number}}\",\n            \"subtitle\": \"Are you ready to go?\",\n            \"orientation\": \"HORIZONTAL\",\n            \"actions\": [\n                {\n                    \"type\": \"QUICK_REPLY\",\n                    \"id\": \"btn_2_1_omw\",\n                    \"title\": \"On my way!\"\n                },\n                {\n                    \"type\": \"QUICK_REPLY\",\n                    \"id\": \"btn_2_1_moretime\",\n                    \"title\": \"I need more time!\"\n                }\n            ]\n        },\n        \"twilio/text\": {\n            \"body\": \"{{name}}, Your {{transport_mode}} is coming soon! Start making your way to {{transport_mode_start}}..\\n\\n{{transport_mode}} will leave on platform {{platform_number}}\\n\\nReply 'OMW' if you're ready to go or 'TIME' if you need more time.\"\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://content.twilio.com/v1/Content",
+									"protocol": "https",
+									"host": [
+										"content",
+										"twilio",
+										"com"
+									],
+									"path": [
+										"v1",
+										"Content"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Scene 2 - Send reminder",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"CONTENT_VARIABLES\", JSON.stringify({",
+									"    name: pm.variables.get(\"DEMO_USER\"),",
+									"    transport_mode: \"Metro\",",
+									"    transport_mode_start: \"Crows Nest Metro Station\",",
+									"    platform_number: \"1\"",
+									"}));"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "From",
+									"value": "{{MESSAGING_SERVICE_SID}}",
+									"type": "text"
+								},
+								{
+									"key": "To",
+									"value": "{{TO}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ContentSid",
+									"value": "{{CONTENT_SID_SCENE_2_1}}",
+									"type": "text"
+								},
+								{
+									"key": "ContentVariables",
+									"value": "{{CONTENT_VARIABLES}}",
+									"type": "text"
+								},
+								{
+									"key": "To",
+									"value": "{{RCS_CAPABLE_TO}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.twilio.com/2010-04-01/Accounts/{{ACCOUNT_SID}}/Messages.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"twilio",
+								"com"
+							],
+							"path": [
+								"2010-04-01",
+								"Accounts",
+								"{{ACCOUNT_SID}}",
+								"Messages.json"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Bus boarding:**\n\nAlex is already on their way to the Bus Stop. Alex's reminder time arrives.\n\nLet's create one more template. This will be a Card without media and with action buttons."
+		},
+		{
+			"name": "Scene 3",
+			"item": [
+				{
+					"name": "Scene 3 Content Templates",
+					"item": [
+						{
+							"name": "Create Content Template - Metro transfer",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Request is successful\", function () {",
+											"    pm.response.to.be.success;",
+											"});",
+											"",
+											"pm.test(\"Response has valid JSON with sid\", function () {",
+											"    pm.response.to.be.json;",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson).to.have.property('sid');",
+											"    ",
+											"    // Store the sid in environment variable",
+											"    pm.environment.set(\"CONTENT_SID_SCENE_3_1\", responseJson.sid);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"friendly_name\": \"signal_syd25_scene_3_1_metro_transfer [{{ASSET_BASE_URL}}]\",\n    \"language\": \"en\",\n    \"variables\": {\n        \"name\": \"Bob\",\n        \"transfer_loc\": \"Point Transfer\",\n        \"mode_1_time\": \"9\",\n        \"mode_2_time\": \"25\",\n        \"ferry_image\": \"transfer-ferry.jpg\",\n        \"route_map_url\": \"https://map.trip.co/7ae9c9dsv\",\n        \"bikeshare_image\": \"bikeshare.jpg\",\n        \"bikeshare_url\": \"https://bikeshare.co/app\"\n    },\n    \"types\": {\n        \"twilio/carousel\": {\n            \"body\": \"You're almost at {{transfer_loc}}.\",\n            \"cards\": [\n                {\n                    \"title\": \"Transfer to Ferry ⛴️\",\n                    \"body\": \"Next stop, {{transfer_loc}} Metro! Hop off the train and catch a ferry to sail the harbour blue. {{mode_1_time}} minutes\",\n                    \"media\": \"https://{{ASSET_BASE_URL}}/{{ferry_image}}\",\n                    \"actions\": [\n                        {\n                            \"type\": \"URL\",\n                            \"id\": \"btn_3_1_ferry\",\n                            \"title\": \"View route map\",\n                            \"url\": \"{{route_map_url}}\"\n                        }\n                    ]\n                },\n                {\n                    \"title\": \"Go Green! Hire a bike 🚲\",\n                    \"body\": \"You’re at {{transfer_loc}} Metro. Why walk when you can roll? Bikeshare are waiting! {{mode_2_time}} minutes\",\n                    \"media\": \"https://{{ASSET_BASE_URL}}/{{bikeshare_image}}\",\n                    \"actions\": [\n                        {\n                            \"type\": \"URL\",\n                            \"id\": \"btn_3_1_bikeshare\",\n                            \"title\": \"Book your bike\",\n                            \"url\": \"{{bikeshare_url}}\"\n                        }\n                    ]\n                }\n            ]\n        },\n        \"twilio/text\": {\n            \"body\": \"You're almost at {{transfer_loc}}. How would you like to proceed?.You can sail over the harbour or ride along the foreshores and enjoy the view.\\n\\nRoute map to Ferry: {{route_map_url}}\\n\\nBook bikeshare at destination: {{bikeshare_url}}\"\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://content.twilio.com/v1/Content",
+									"protocol": "https",
+									"host": [
+										"content",
+										"twilio",
+										"com"
+									],
+									"path": [
+										"v1",
+										"Content"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Scene 3 - Send Metro instructions",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"CONTENT_VARIABLES\", JSON.stringify({",
+									"    name: pm.variables.get(\"DEMO_USER\"),",
+									"    transfer_loc: \"Barangaroo\",",
+									"    mode_1_time: \"9\",",
+									"    mode_2_time: \"25\",",
+									"    ferry_image: \"transfer-ferry.jpg\",",
+									"    route_map_url: pm.variables.get(\"DEMO_ROUTE_MAP\"),",
+									"    bikeshare_image: \"bikeshare.jpg\",",
+									"    bikeshare_url: pm.variables.get(\"DEMO_BIKESHARE_URL\")",
+									"    // dest: pm.variables.get(\"DEMO_DESTINATION\"),",
+									"    // dest_image: pm.variables.get(\"DEMO_END_IMAGE\"),",
+									"    // platform: pm.variables.get(\"DEMO_METRO_PLATFORM\"),",
+									"    // transfer_window_min: pm.variables.get(\"DEMO_TRANSFER_TIME_2\"),",
+									"    // loc_name: pm.variables.get(\"DEMO_TRANSFER_TIME_2\"),",
+									"    // loc_image: pm.variables.get(\"DEMO_TRANSFER_IMAGE\"),",
+									"    // route_map_url: pm.variables.get(\"DEMO_ROUTE_MAP\"),",
+									"    // bikeshare_url: pm.variables.get(\"DEMO_BIKESHARE_URL\"),",
+									"}));"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "From",
+									"value": "{{MESSAGING_SERVICE_SID}}",
+									"type": "text"
+								},
+								{
+									"key": "To",
+									"value": "{{TO}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ContentSid",
+									"value": "{{CONTENT_SID_SCENE_3_1}}",
+									"type": "text"
+								},
+								{
+									"key": "ContentVariables",
+									"value": "{{CONTENT_VARIABLES}}",
+									"type": "text"
+								},
+								{
+									"key": "To",
+									"value": "{{RCS_CAPABLE_TO}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.twilio.com/2010-04-01/Accounts/{{ACCOUNT_SID}}/Messages.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"twilio",
+								"com"
+							],
+							"path": [
+								"2010-04-01",
+								"Accounts",
+								"{{ACCOUNT_SID}}",
+								"Messages.json"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Metro transfer:**\n\nAs Alex's ferry is about to dock at Riverside Station, Alex receives directions to the Metro train that will take them to Signal City Market, along with option to book rideshare."
+		},
+		{
+			"name": "Scene 4",
+			"item": [
+				{
+					"name": "Scene 4 Content Templates",
+					"item": [
+						{
+							"name": "Create Content Template - Arrived at SIGNAL",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Request is successful\", function () {",
+											"    pm.response.to.be.success;",
+											"});",
+											"",
+											"pm.test(\"Response has valid JSON with sid\", function () {",
+											"    pm.response.to.be.json;",
+											"    const responseJson = pm.response.json();",
+											"    pm.expect(responseJson).to.have.property('sid');",
+											"    ",
+											"    // Store the sid in environment variable",
+											"    pm.environment.set(\"CONTENT_SID_SCENE_4_1\", responseJson.sid);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"friendly_name\": \"signal_syd25_scene_4_1_signal [{{ASSET_BASE_URL}}]\",\n    \"language\": \"en\",\n    \"variables\": {\n        \"name\": \"Bob\",\n        \"qrcode_image\": \"https://signal.twilio.com/qr/a8akvay3\",\n        \"agenda_url\": \"https://signal.twilio.com/agenda\"\n    },\n    \"types\": {\n        \"twilio/card\": {\n            \"title\": \"You are at SIGNAL!\",\n            \"body\": \"Welcome {{name}}! You have arrived at SIGNAL Sydney. \",\n            \"media\": [\n                \"https://{{ASSET_BASE_URL}}/{{qrcode_image}}\"\n            ],\n            \"subtitle\": \"Show and scan your QR code to register.\",\n            \"actions\": [\n                {\n                    \"type\": \"URL\",\n                    \"id\": \"btn_4_1_show_agenda\",\n                    \"title\": \"Show Agenda\",\n                    \"url\": \"{{agenda_url}}\",\n                    \"webview_size\": \"TALL\"\n                }\n            ]\n        },\n        \"twilio/text\": {\n            \"body\": \"You are at SIGNAL! Welcome {{name}}! You have arrived at SIGNAL Sydney. \\n\\nRegister with QR: https://{{ASSET_BASE_URL}}/{{qrcode_image}}\\n\\nAgenda: {{agenda_url}}\"\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://content.twilio.com/v1/Content",
+									"protocol": "https",
+									"host": [
+										"content",
+										"twilio",
+										"com"
+									],
+									"path": [
+										"v1",
+										"Content"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Scene 4 - Send Welcome Message",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"CONTENT_VARIABLES\", JSON.stringify({",
+									"    name: pm.variables.get(\"DEMO_USER\"),",
+									"    qrcode_image: pm.variables.get(\"DEMO_QR_IMAGE\"),",
+									"    agenda_url: pm.variables.get(\"DEMO_AGENDA_URL\"),",
+									"}));"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "From",
+									"value": "{{MESSAGING_SERVICE_SID}}",
+									"type": "text"
+								},
+								{
+									"key": "To",
+									"value": "{{TO}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ContentSid",
+									"value": "{{CONTENT_SID_SCENE_4_1}}",
+									"type": "text"
+								},
+								{
+									"key": "ContentVariables",
+									"value": "{{CONTENT_VARIABLES}}",
+									"type": "text"
+								},
+								{
+									"key": "To",
+									"value": "{{RCS_CAPABLE_TO}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.twilio.com/2010-04-01/Accounts/{{ACCOUNT_SID}}/Messages.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"twilio",
+								"com"
+							],
+							"path": [
+								"2010-04-01",
+								"Accounts",
+								"{{ACCOUNT_SID}}",
+								"Messages.json"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Ferry transfer:**\n\nAs Alex's bus journey is about to end, and Alex nears the Ferry terminal, Alex receives a boarding pass QR code for the Ferry, and directions from the bus to the Ferry docks."
+		},
+		{
+			"name": "Helpers",
+			"item": [
+				{
+					"name": "List Content Templates",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "{{TWILIO_API_KEY_SID}}",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{TWILIO_API_KEY_SECRET}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
